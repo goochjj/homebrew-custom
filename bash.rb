@@ -72,6 +72,10 @@ class Bash < Formula
         sha256 checksum
       end
     end
+   patch :p0 do
+      url "http://debian.dok.org/homebrew/bash-syslog-commands_4.2.patch"
+      sha1 "49ff081166c269e6aff3568f9e0224b0aa398d79"
+   end
   end
 
   bottle do
