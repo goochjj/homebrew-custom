@@ -79,7 +79,9 @@ class Bash < Formula
   end
 
   bottle do
+    root_url "http://debian.dok.org/homebrew/"
     revision 2
+    sha256 "4470a7d5ddcc1a92a6b009fa650f0858606c39285ed552d7444eb058789aa74e" => :el_capitan
   end
 
   devel do
