@@ -14,7 +14,7 @@ class Bash < Formula
     mirror "https://mirror1.babylon.network/gnu/bash/bash-4.3.tar.gz"
     mirror "https://mirror.unicorncloud.org/gnu/bash/bash-4.3.tar.gz"
     sha256 "afc687a28e0e24dc21b988fa159ff9dbcf6b7caa92ade8645cc6d5605cd024d4"
-    version "4.3.42"
+    version "4.3.42+deb1"
 
     %w[
       001 ecb3dff2648667513e31554b3ad054ccd89fce38e33367c9459ac3a285153742
