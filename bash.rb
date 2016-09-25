@@ -18,7 +18,6 @@ class Bash < Formula
 
   bottle do
     root_url "http://debian.dok.org/homebrew/"
-    revision 3
     sha256 "17647411ad204f4f597e05dc3d986b5f33a98420751c5a0606b3b6763cefc7b8" => :sierra
   end
 
