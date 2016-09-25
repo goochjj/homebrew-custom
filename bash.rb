@@ -74,7 +74,7 @@ class Bash < Formula
     end
    patch :p0 do
       url "http://debian.dok.org/homebrew/bash-syslog-commands_4.2.patch"
-      sha1 "49ff081166c269e6aff3568f9e0224b0aa398d79"
+      sha256 "a9be0c0438b532c2c7f9ab6c42596eebfd496dcd4b897a37d41dd3456baefc1c"
    end
   end
 
