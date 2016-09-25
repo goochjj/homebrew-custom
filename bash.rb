@@ -20,6 +20,7 @@ class Bash < Formula
     root_url "http://debian.dok.org/homebrew/"
     rebuild 1
     sha256 "25a9ff66e850306a3c8273e2f28c18062348266797c738a55bef6d0f800f76bd" => :sierra
+    sha256 "8313c3a847e93a9750b1ff8cb7b80f45f56edffebcd0161833db6b11607affcd" => :el_capitan
   end
 
   depends_on "readline"
