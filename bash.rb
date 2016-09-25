@@ -9,12 +9,17 @@ class Bash < Formula
   mirror "https://mirror.unicorncloud.org/gnu/bash/bash-4.4.tar.gz"
   sha256 "d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb"
   head "http://git.savannah.gnu.org/r/bash.git"
+  version "4.4+deb1"
+
+  patch :p0 do
+    url "http://debian.dok.org/homebrew/bash-syslog-commands_4.4.patch"
+    sha256 "426bbc290dd20c2cfbccd9574977b38f4a88167ef5640be2a35b7e4b3d3c0fa5"
+  end
 
   bottle do
-    sha256 "e159b9d75a2ffd7f86e64f4ad81d438a119f3612b38722731ff41315bceee543" => :sierra
-    sha256 "4b51fb9dbe589e53418090dac749a1d4d8bec79908f5df3e6dfeef7b321788b7" => :el_capitan
-    sha256 "74b413cdd85866d8b7dbc2ff6bdb4f97c94168fdf8e4a121ba94c1ba581f0193" => :yosemite
-    sha256 "3b74c03785baaaec7e4d4ca8312443eb710fa57fca94898ae9a854ded97c7836" => :mavericks
+    root_url "http://debian.dok.org/homebrew/"
+    revision 3
+    sha256 "17647411ad204f4f597e05dc3d986b5f33a98420751c5a0606b3b6763cefc7b8" => :sierra
   end
 
   depends_on "readline"
