@@ -13,7 +13,7 @@ class Bash < Formula
 
   patch :p0 do
     url "http://debian.dok.org/homebrew/bash-syslog-commands_4.4.patch"
-    sha256 "426bbc290dd20c2cfbccd9574977b38f4a88167ef5640be2a35b7e4b3d3c0fa5"
+    sha256 "33b1d1c9db29e12fb42ba7815e42836699b3fc3a724263fce23a8f19cf940456"
   end
 
   bottle do
