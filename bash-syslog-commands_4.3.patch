@@ -1,16 +1,18 @@
+# DP: Syslog all commands
+
 From f5f0bb7eabb66fbc2f47b80957681a90669b767c Mon Sep 17 00:00:00 2001
 From: Joseph Gooch <mrwizard@dok.org>
 Date: Sun, 13 Feb 2011 11:41:22 -0500
 Subject: activate syslog history commands
 
 ---
- bash/config-top.h |    4 ++--
+ config-top.h |    4 ++--
  1 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/bash/config-top.h b/bash/config-top.h
+diff --git a/config-top.h b/config-top.h
 index da56734..d9b1975 100644
---- config-top.h
-+++ config-top.h
+--- a/config-top.h
++++ b/config-top.h
 @@ -101,9 +101,9 @@
  
  /* Define if you want each line saved to the history list in bashhist.c:
@@ -19,13 +21,12 @@ index da56734..d9b1975 100644
 +#define SYSLOG_HISTORY
  #if defined (SYSLOG_HISTORY)
 -#  define SYSLOG_FACILITY LOG_USER
--#  define SYSLOG_LEVEL LOG_INFO
 +#  define SYSLOG_FACILITY LOG_LOCAL5
-+#  define SYSLOG_LEVEL LOG_NOTICE
+ #  define SYSLOG_LEVEL LOG_INFO
  #endif
  
 -- 
-1.7.7.4
+1.7.2.3
 
 
 From fced8daa270807be3209e5b4ce4569b5da690397 Mon Sep 17 00:00:00 2001
@@ -34,14 +35,14 @@ Date: Sun, 13 Feb 2011 12:01:52 -0500
 Subject: port syslog patch from 3.2
 
 ---
- bash/bashhist.c |   22 ++++++++++++++++++++--
- bash/shell.c    |    7 +++++++
+ bashhist.c |   22 ++++++++++++++++++++--
+ shell.c    |    7 +++++++
  2 files changed, 27 insertions(+), 2 deletions(-)
 
-diff --git a/bash/bashhist.c b/bash/bashhist.c
+diff --git a/bashhist.c b/bashhist.c
 index 7240a5b..c2ae918 100644
---- bashhist.c
-+++ bashhist.c
+--- a/bashhist.c
++++ b/bashhist.c
 @@ -63,6 +63,9 @@ extern int rl_done, rl_dispatching;	/* should really include readline.h */
  extern int errno;
  #endif
@@ -84,10 +85,10 @@ index 7240a5b..c2ae918 100644
      }
  }
  #endif
-diff --git a/bash/shell.c b/bash/shell.c
+diff --git a/shell.c b/shell.c
 index ecf3c9e..54917e9 100644
---- shell.c
-+++ shell.c
+--- a/shell.c
++++ b/shell.c
 @@ -107,6 +107,8 @@ extern int gnu_error_format;
  extern char *primary_prompt, *secondary_prompt;
  extern char *this_command_name;
@@ -110,5 +111,5 @@ index ecf3c9e..54917e9 100644
      {
        argc = subshell_argc;
 -- 
-1.7.7.4
+1.7.2.3
 

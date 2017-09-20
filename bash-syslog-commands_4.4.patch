@@ -1,0 +1,89 @@
+diff -ru bashhist.c bashhist.c
+--- bashhist.c	2016-04-13 08:40:43.000000000 -0400
++++ bashhist.c	2016-09-25 10:13:19.000000000 -0400
+@@ -63,6 +63,8 @@
+ extern int errno;
+ #endif
+ 
++extern char * init_sudo_user;
++
+ static int histignore_item_func __P((struct ign *));
+ static int check_history_control __P((char *));
+ static void hc_erasedups __P((char *));
+@@ -759,21 +761,31 @@
+      const char *line;
+ {
+   char trunc[SYSLOG_MAXLEN];
++  char wd[PATH_MAX];
+   static int first = 1;
+ 
+   if (first)
+     {
+-      openlog (shell_name, OPENLOG_OPTS, SYSLOG_FACILITY);
++      char ident[600];
++      char ident2[600];
++
++      *ident2 = 0;
++      if (init_sudo_user) snprintf(ident2, 600, "|%s)", init_sudo_user);
++      ident[599]=0;
++      snprintf(ident, 600, "bashcmd(%s|%d%s)[%d=>%d]", current_user.user_name, current_user.uid, ident2, getppid(),getpid());
++      openlog (strdup(ident), LOG_NDELAY, LOG_LOCAL5);
+       first = 0;
+     }
++  getcwd(wd, sizeof(wd)-1);
++  wd[PATH_MAX-1]=0;
+ 
+   if (strlen(line) < SYSLOG_MAXLEN)
+-    syslog (SYSLOG_FACILITY|SYSLOG_LEVEL, "HISTORY: PID=%d UID=%d %s", getpid(), current_user.uid, line);
++    syslog (SYSLOG_FACILITY|SYSLOG_LEVEL, "%s%s %s", wd, current_user.uid==0?"#":"$", line);
+   else
+     {
+       strncpy (trunc, line, SYSLOG_MAXLEN);
+       trunc[SYSLOG_MAXLEN - 1] = '\0';
+-      syslog (SYSLOG_FACILITY|SYSLOG_LEVEL, "HISTORY (TRUNCATED): PID=%d UID=%d %s", getpid(), current_user.uid, trunc);
++      syslog (SYSLOG_FACILITY|SYSLOG_LEVEL, "%s%s %s(TRUNCATED)", wd, current_user.uid==0?"#":"$", trunc);
+     }
+ }
+ #endif
+Only in bash-4.4: bashhist.c.orig
+diff -ru config-top.h config-top.h
+--- config-top.h	2016-05-19 14:34:02.000000000 -0400
++++ config-top.h	2016-09-25 10:07:07.000000000 -0400
+@@ -113,9 +113,9 @@
+ 
+ /* Define if you want each line saved to the history list in bashhist.c:
+    bash_add_history() to be sent to syslog(). */
+-/* #define SYSLOG_HISTORY */
++#define SYSLOG_HISTORY
+ #if defined (SYSLOG_HISTORY)
+-#  define SYSLOG_FACILITY LOG_USER
++#  define SYSLOG_FACILITY LOG_LOCAL5
+-#  define SYSLOG_LEVEL LOG_INFO
++#  define SYSLOG_LEVEL LOG_NOTICE
+ #  define OPENLOG_OPTS LOG_PID
+ #endif
+Only in bash-4.4: config-top.h.orig
+diff -ru shell.c shell.c
+--- shell.c	2016-05-06 11:23:43.000000000 -0400
++++ shell.c	2016-09-25 10:09:00.000000000 -0400
+@@ -114,6 +114,8 @@
+ extern char *primary_prompt, *secondary_prompt;
+ extern char *this_command_name;
+ 
++char * init_sudo_user;
++
+ /* Non-zero means that this shell has already been run; i.e. you should
+    call shell_reinitialize () if you need to start afresh. */
+ int shell_initialized = 0;
+@@ -419,6 +421,11 @@
+   mcheck (programming_error, (void (*) ())0);
+ #endif /* USE_GNU_MALLOC_LIBRARY */
+ 
++  init_sudo_user = NULL;
++  if (getenv ("SUDO_USER")) {
++    init_sudo_user = savestring( getenv ("SUDO_USER") );
++  }
++
+   if (setjmp_sigs (subshell_top_level))
+     {
+       argc = subshell_argc;
