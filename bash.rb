@@ -45,6 +45,8 @@ class Bash < Formula
     root_url "http://debian.dok.org/homebrew/"
     rebuild 2
     sha256 "ae34773f13f2bd0f62d29bb360e969079de033d4e1a5126edfc2e0596a105f3b" => :sierra
+    sha256 "1435d352dfb06f9da47576170b8c84b8c221f7bbcb313d34d9369c86e39f4eda" => :el_capitan
+    sha256 "129f6f6f9190cad8fae5fb36095aba1e09870682ed2d37f13ea157df5f050822" => :yosemite
   end
 
   depends_on "readline"
