@@ -20,7 +20,7 @@ index da56734..d9b1975 100644
  #if defined (SYSLOG_HISTORY)
 -#  define SYSLOG_FACILITY LOG_USER
 +#  define SYSLOG_FACILITY LOG_LOCAL5
- #  define SYSLOG_LEVEL LOG_INFO
+ #  define SYSLOG_LEVEL LOG_NOTICE
  #endif
  
 -- 
