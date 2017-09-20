@@ -1,7 +1,7 @@
 class Bash < Formula
   desc "Bourne-Again SHell, a UNIX command interpreter"
   homepage "https://www.gnu.org/software/bash/"
-  url "https://ftpmirror.gnu.org/bash/bash-4.4.tar.gz"
+  url "https://ftp.gnu.org/bash/bash-4.4.tar.gz"
   mirror "https://mirrors.ocf.berkeley.edu/gnu/bash/bash-4.4.tar.gz"
   mirror "https://mirrors.kernel.org/gnu/bash/bash-4.4.tar.gz"
   mirror "https://ftp.gnu.org/gnu/bash/bash-4.4.tar.gz"
@@ -44,9 +44,7 @@ class Bash < Formula
   bottle do
     root_url "http://debian.dok.org/homebrew/"
     rebuild 1
-    sha256 "25a9ff66e850306a3c8273e2f28c18062348266797c738a55bef6d0f800f76bd" => :sierra
-    sha256 "8313c3a847e93a9750b1ff8cb7b80f45f56edffebcd0161833db6b11607affcd" => :el_capitan
-    sha256 "8ea9f740bd94763a8712c482f93cf906338840a6de71a3de49a66ddc67a39d79" => :yosemite
+    sha256 "14b57c88b195f2b18355b879a76bebb26570d2cbce199608d952d520f83f3aa7" => :sierra
   end
 
   depends_on "readline"
