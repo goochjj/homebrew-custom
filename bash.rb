@@ -9,7 +9,7 @@ class Bash < Formula
   mirror "https://mirror.unicorncloud.org/gnu/bash/bash-4.4.tar.gz"
   sha256 "d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb"
   head "http://git.savannah.gnu.org/r/bash.git"
-  version "4.4.12.deb2"
+  version "4.4.12.deb3"
 
 %w[
       001 3e28d91531752df9a8cb167ad07cc542abaf944de9353fe8c6a535c9f1f17f0f
@@ -42,7 +42,7 @@ class Bash < Formula
   end
 
   bottle do
-    root_url "https://github.com/goochjj/homebrew-custom/releases/download/4.4.12.deb2"
+    root_url "https://github.com/goochjj/homebrew-custom/releases/download/4.4.12.deb3"
     sha256 "ae34773f13f2bd0f62d29bb360e969079de033d4e1a5126edfc2e0596a105f3b" => :sierra
     sha256 "1435d352dfb06f9da47576170b8c84b8c221f7bbcb313d34d9369c86e39f4eda" => :el_capitan
     sha256 "129f6f6f9190cad8fae5fb36095aba1e09870682ed2d37f13ea157df5f050822" => :yosemite
