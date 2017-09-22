@@ -43,9 +43,10 @@ class Bash < Formula
 
   bottle do
     root_url "https://github.com/goochjj/homebrew-custom/releases/download/4.4.12.deb3"
-    sha256 "ae34773f13f2bd0f62d29bb360e969079de033d4e1a5126edfc2e0596a105f3b" => :sierra
-    sha256 "1435d352dfb06f9da47576170b8c84b8c221f7bbcb313d34d9369c86e39f4eda" => :el_capitan
-    sha256 "129f6f6f9190cad8fae5fb36095aba1e09870682ed2d37f13ea157df5f050822" => :yosemite
+    rebuild 1
+    sha256 "016cc725a68ba471f4eae6121ec0a8e3f25abfcdd39361db31bcda7dd0b1a7ed" => :sierra
+    sha256 "110b15d0cdf6f02271c41268c748dee5715490e35ab61d4278c642dab4403fef" => :el_capitan
+    sha256 "adb2917f19c878a9597ae92482ebd6a0a40deb9dac4f863e2653a8a999272f67" => :yosemite
   end
 
   depends_on "readline"
