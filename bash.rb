@@ -15,6 +15,8 @@ class Bash < Formula
   bottle do
     root_url "https://github.com/goochjj/homebrew-custom/releases/download/4.4.23.deb3"
     sha256 "7a4f5dd7eee6c88ddc143cf1dbd00fb97002312aebdef663e4536298f049c31b" => :mojave
+    sha256 "9bf7788bfbb6e81d77eebe61b5063f11768cf49faa111085079346eeaff1a806" => :high_sierra
+    sha256 "f12671a6b50a6034514b897e6651093d926746229593053eb7d47a3f6ae11104" => :el_capitan
   end
 
   depends_on "readline"
