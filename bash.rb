@@ -1,15 +1,24 @@
 class Bash < Formula
   desc "Bourne-Again SHell, a UNIX command interpreter"
   homepage "https://www.gnu.org/software/bash/"
+
   url "https://ftp.gnu.org/bash/bash-4.4.tar.gz"
   mirror "https://mirrors.ocf.berkeley.edu/gnu/bash/bash-4.4.tar.gz"
   mirror "https://mirrors.kernel.org/gnu/bash/bash-4.4.tar.gz"
   mirror "https://ftp.gnu.org/gnu/bash/bash-4.4.tar.gz"
   mirror "https://gnu.cu.be/bash/bash-4.4.tar.gz"
   mirror "https://mirror.unicorncloud.org/gnu/bash/bash-4.4.tar.gz"
+  version "4.4.23.deb3"
   sha256 "d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb"
   head "http://git.savannah.gnu.org/r/bash.git"
-  version "4.4.12.deb3"
+
+  bottle do
+    root_url "https://github.com/goochjj/homebrew-custom/releases/download/4.4.23.deb3"
+    sha256 "7a4f5dd7eee6c88ddc143cf1dbd00fb97002312aebdef663e4536298f049c31b" => :mojave
+  end
+
+  depends_on "readline"
+
 
 %w[
       001 3e28d91531752df9a8cb167ad07cc542abaf944de9353fe8c6a535c9f1f17f0f
@@ -24,6 +33,17 @@ class Bash < Formula
       010 8465c6f2c56afe559402265b39d9e94368954930f9aa7f3dfa6d36dd66868e06
       011 dd56426ef7d7295e1107c0b3d06c192eb9298f4023c202ca2ba6266c613d170d
       012 fac271d2bf6372c9903e3b353cb9eda044d7fe36b5aab52f21f3f21cd6a2063e
+      013 1b25efacbc1c4683b886d065b7a089a3601964555bcbf11f3a58989d38e853b6
+      014 a7f75cedb43c5845ab1c60afade22dcb5e5dc12dd98c0f5a3abcfb9f309bb17c
+      015 d37602ecbeb62d5a22c8167ea1e621fcdbaaa79925890a973a45c810dd01c326
+      016 501f91cc89fadced16c73aa8858796651473602c722bb29f86a8ba588d0ff1b1
+      017 773f90b98768d4662a22470ea8eec5fdd8e3439f370f94638872aaf884bcd270
+      018 5bc494b42f719a8b0d844b7bd9ad50ebaae560e97f67c833c9e7e9d53981a8cc
+      019 27170d6edfe8819835407fdc08b401d2e161b1400fe9d0c5317a51104c89c11e
+      020 1840e2cbf26ba822913662f74037594ed562361485390c52813b38156c99522c
+      021 bd8f59054a763ec1c64179ad5cb607f558708a317c2bdb22b814e3da456374c1
+      022 45331f0936e36ab91bfe44b936e33ed8a1b1848fa896e8a1d0f2ef74f297cb79
+      023 4fec236f3fbd3d0c47b893fdfa9122142a474f6ef66c20ffb6c0f4864dd591b6
     ].each_slice(2) do |p, checksum|
       patch :p0 do
         url "https://ftp.gnu.org/gnu/bash/bash-4.4-patches/bash44-#{p}"
@@ -41,16 +61,6 @@ class Bash < Formula
     sha256 "40d383e7b556466c804bcacdb103279cd0be952669bf925a748c5b7376b7b3fe"
   end
 
-  bottle do
-    root_url "https://github.com/goochjj/homebrew-custom/releases/download/4.4.12.deb3"
-    rebuild 1
-    sha256 "3fbafa107936c856f4cf70c3ee97d83d431e8b010c4c25886533e12cd89e6f6d" => :high_sierra
-    sha256 "016cc725a68ba471f4eae6121ec0a8e3f25abfcdd39361db31bcda7dd0b1a7ed" => :sierra
-    sha256 "110b15d0cdf6f02271c41268c748dee5715490e35ab61d4278c642dab4403fef" => :el_capitan
-    sha256 "adb2917f19c878a9597ae92482ebd6a0a40deb9dac4f863e2653a8a999272f67" => :yosemite
-  end
-
-  depends_on "readline"
 
   def install
     # When built with SSH_SOURCE_BASHRC, bash will source ~/.bashrc when
